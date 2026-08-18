@@ -120,7 +120,7 @@
 
 ### 🛠️ Troubleshooting
 
-* Web Service 404 error
+- [Web Service 404 Error](https://github.com/USERNAME/REPOSITORY/tree/troubleshooting/web-service-404-error)
 
 ---
 
