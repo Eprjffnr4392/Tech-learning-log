@@ -118,6 +118,10 @@
 * 제조사 기술 분석
 * 문제 재현 및 검증
 
+### 🛠️ Troubleshooting
+
+* Web Service 404 error
+
 ---
 
 ## My Principle
