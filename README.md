@@ -120,7 +120,7 @@
 
 ### 🛠️ Troubleshooting
 
-- [Web Service 404 Error](https://github.com/Eprjffnr4392/REPOSITORY/tree/troubleshooting/web-service-404-error)
+- [Web Service 404 Error](https://github.com/Eprjffnr4392/Tech-learning-log/blob/main/web-service-404-error)
 
 ---
 
