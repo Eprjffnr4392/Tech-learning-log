@@ -1,26 +1,5 @@
 # Tomcat 404 및 DB 연결 장애 분석
 
-> 업무 중 발생한 Tomcat 웹 서비스 장애를 분석하며 수행한 점검 과정과
-> 원인 추적 방법을 정리한 기술 학습 기록입니다.
-
-※ 보안 및 정보보호를 위해 실제 서버의 IP, 경로, 제품명, 프로세스명,
-DB명, 포트번호 및 로그의 일부 내용을 비식별화했습니다.
-
----
-
-## 1. 장애 현상
-
-Tomcat 프로세스 자체는 정상적으로 기동된 것으로 확인되었으나,
-웹 브라우저 및 `curl`을 이용하여 서비스에 접근했을 때 `HTTP 404`가 발생했습니다.
-
-확인 명령:
-
-```bash
-curl -k -I https://<SERVER_IP>:<HTTPS_PORT>/CM001.do
-```
-
-# Tomcat 404 및 DB 연결 장애 분석
-
 > 업무 중 발생한 Tomcat 웹 서비스 장애를 분석하며 수행한 점검 과정과  
 > 원인 추적 방법을 정리한 기술 학습 기록입니다.
 
@@ -35,13 +14,19 @@ curl -k -I https://<SERVER_IP>:<HTTPS_PORT>/CM001.do
 Tomcat 프로세스 자체는 정상적으로 기동된 것으로 확인되었으나,  
 웹 브라우저 및 `curl`을 이용하여 서비스에 접근했을 때 `HTTP 404`가 발생했습니다.
 
+확인 명령:
+
+```bash
+curl -k -I https://<SERVER_IP>:<HTTPS_PORT>/CM001.do
+```
+
 ### 확인 결과
 
 ```text
 HTTP/1.1 404
 Content-Type: text/html;charset=utf-8
 ```
-https://github.com/Eprjffnr4392/Tech-learning-log/issues/1#issue-5179227392
+![Tomcat 404 오류](images/tomcat-404.png)
 
 단순히 HTTPS 포트가 열려 있지 않은 상황이라면 연결 자체가 실패해야 하지만,  
 HTTP 응답 코드 `404`가 반환되었으므로 Tomcat의 HTTPS Connector까지는  
