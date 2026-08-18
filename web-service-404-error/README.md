@@ -17,3 +17,11 @@ Tomcat 프로세스 자체는 정상적으로 기동된 것으로 확인되었�
 
 ```bash
 curl -k -I https://<SERVER_IP>:<HTTPS_PORT>/CM001.do
+
+확인 결과
+HTTP/1.1 404
+Content-Type: text/html;charset=utf-8
+
+단순히 HTTPS 포트가 열려 있지 않은 상황이라면 연결 자체가 실패해야 하지만, HTTP 응답 코드 404가 반환되었으므로 Tomcat의 HTTPS Connector까지는 정상적으로 요청이 전달되고 있는 것으로 판단했습니다.
+
+따라서 네트워크 또는 HTTPS 포트 자체의 문제보다는 Tomcat Web Application 초기화 상태를 확인할 필요가 있다고 판단했습니다.
