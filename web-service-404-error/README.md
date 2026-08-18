@@ -17,6 +17,7 @@ Tomcat 프로세스 자체는 정상적으로 기동된 것으로 확인되었�
 
 ```bash
 curl -k -I https://<SERVER_IP>:<HTTPS_PORT>/CM001.do
+```
 
 # Tomcat 404 및 DB 연결 장애 분석
 
@@ -33,8 +34,6 @@ curl -k -I https://<SERVER_IP>:<HTTPS_PORT>/CM001.do
 
 Tomcat 프로세스 자체는 정상적으로 기동된 것으로 확인되었으나,  
 웹 브라우저 및 `curl`을 이용하여 서비스에 접근했을 때 `HTTP 404`가 발생했습니다.
-
-```
 
 ### 확인 결과
 
