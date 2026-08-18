@@ -9,3 +9,6 @@ init 0 run level 제어
 shutdown -r now
 reboot
 init 6
+
+파일 만들 때 숨김 파일 지정 -> .test 식으로 작명
+파일을 만드는 명령어: touch, vim
