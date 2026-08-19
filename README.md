@@ -49,7 +49,7 @@
     <td align="center"><b>🗄️ Database</b></td>
   </tr>
   <tr>
-    <td align="center">TCP/IP · VPN · Firewall<br>Network Troubleshooting</td>
+    <td align="center">TCP/IP · Routing · VPN<br>IPsec VPN · Firewall</td>
     <td align="center">Linux Server<br>System Administration</td>
     <td align="center">PostgreSQL<br>SQL · Backup · Troubleshooting</td>
   </tr>
@@ -59,9 +59,9 @@
     <td align="center"><b>🧪 Analysis</b></td>
   </tr>
   <tr>
-    <td align="center">Vulnerability Analysis<br>Security Solutions</td>
-    <td align="center">Apache · Tomcat<br>Server Maintenance</td>
-    <td align="center">Log Analysis<br>Root Cause Analysis</td>
+    <td align="center">Vulnerability Analysis<br>DDoS Simulation · Security Solutions</td>
+    <td align="center">Apache · Tomcat<br>Server Maintenance · SSL/TLS</td>
+    <td align="center">Log Analysis · Forensics<br>Reversing · Root Cause Analysis</td>
   </tr>
 </table>
 
@@ -74,6 +74,7 @@
 * TCP/IP
 * Routing
 * VPN / IPsec
+* IPsec VPN Lab
 * Firewall
 * Network Troubleshooting
 * Packet Analysis
@@ -100,6 +101,9 @@
 * Security Configuration
 * Network Security
 * Security Solutions
+* DDoS Simulation
+* Digital Forensics
+* Reverse Engineering
 * CTF / Security Study
 
 ### ⚙️ Server & Infrastructure
@@ -117,6 +121,8 @@
 * Configuration Analysis
 * 제조사 기술 분석
 * 문제 재현 및 검증
+* Digital Forensics
+* Reverse Engineering
 
 ### 🛠️ Troubleshooting
 
@@ -145,6 +151,7 @@ Tech-learning-log
 ├── Network
 │   ├── TCP-IP
 │   ├── VPN
+│   ├── IPsec-VPN
 │   ├── Firewall
 │   └── Troubleshooting
 │
@@ -161,6 +168,9 @@ Tech-learning-log
 ├── Security
 │   ├── Vulnerability
 │   ├── Network-Security
+│   ├── DDoS-Simulation
+│   ├── Forensics
+│   ├── Reversing
 │   └── CTF
 │
 ├── Server
@@ -172,7 +182,6 @@ Tech-learning-log
     ├── 장애분석
     ├── Log-Analysis
     └── Technical-Analysis
-```
 
 ---
 
