@@ -81,7 +81,7 @@
 
 ### 🐧 Linux
 
-* [Linux System Administration](Linux command/command.md)
+* [Linux System Administration](https://github.com/Eprjffnr4392/Tech-learning-log/blob/a6f0681b786fe70ae7d6188e8804ef0c12db6f21/Linux%20command/command.md)
 * Process / Memory / Disk
 * Network Configuration
 * Service Management
