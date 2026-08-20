@@ -81,7 +81,7 @@
 
 ### 🐧 Linux
 
-* Linux System Administration
+* [Linux System Administration](Linux command/command.md)
 * Process / Memory / Disk
 * Network Configuration
 * Service Management
