@@ -16,3 +16,4 @@ PNG 파일은 다음과 같은 시그니처로 시작한다.
 
 ```text
 89 50 4E 47 0D 0A 1A 0A
+![PNG_Signiture](images/포렌식_파일_형식_분석1.png)
