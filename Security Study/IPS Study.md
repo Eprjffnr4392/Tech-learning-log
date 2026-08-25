@@ -87,7 +87,7 @@ NetBIOS Scan은 네트워크에 존재하는 장비 중 **NetBIOS 관련 서비�
 
 ## 4. NAT란?
 
-공유기에서는 일반적으로 **NAT(Network Address Translation)**를 사용한다.
+공유기에서는 일반적으로 NAT(Network Address Translation)를 사용한다.
 
 예를 들어 내부 PC가 `192.168.0.10`이라는 사설 IP를 가지고 있다고 하자.
 
