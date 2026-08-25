@@ -43,7 +43,7 @@ NetBIOS Scan은 네트워크에 존재하는 장비 중 **NetBIOS 관련 서비�
 ```text
                   인터넷
                      │
-              공인 IP 106.x.x.x
+              공인 IP 222.x.x.x
                      │
                   [공유기]
                      │
@@ -62,7 +62,7 @@ NetBIOS Scan은 네트워크에 존재하는 장비 중 **NetBIOS 관련 서비�
 예:
 
 ```text
-106.x.x.x
+222.x.x.x
 ```
 
 ### 사설 IP
@@ -99,7 +99,7 @@ NetBIOS Scan은 네트워크에 존재하는 장비 중 **NetBIOS 관련 서비�
       │
       │ NAT
       ↓
-106.x.x.x
+222.x.x.x
       │
       ↓
    인터넷
@@ -123,7 +123,7 @@ NetBIOS Scan은 네트워크에 존재하는 장비 중 **NetBIOS 관련 서비�
       │
       ↓
 우리 공유기
-106.x.x.x
+222.x.x.x
       │
       ↓
 우리 네트워크
@@ -146,7 +146,7 @@ NetBIOS Scan은 네트워크에 존재하는 장비 중 **NetBIOS 관련 서비�
 그런데 패킷의 Source IP를 다른 주소로 변경할 수 있다.
 
 ```text
-Source IP: 106.x.x.x
+Source IP: 222.x.x.x
 ```
 
 즉, 실제 공격자는 다른 IP에 있지만 패킷에는 다른 출발지 IP가 기록되는 것이다.
@@ -173,7 +173,7 @@ Source IP: 106.x.x.x
       │
       ↓
 Source IP를
-106.x.x.x로 위조
+222.x.x.x로 위조
 ```
 
 따라서 **공인 IP를 알고 공격하는 것과 IP Spoofing은 같은 의미가 아니다.**
@@ -191,7 +191,7 @@ IP Spoofing을 했다고 해서 공격자가 위조한 IP의 네트워크를 거
 IPS에서 다음과 같이 표시되었다고 해서,
 
 ```text
-공격자 IP: 106.x.x.x
+공격자 IP: 222.x.x.x
 공격명: NetBIOS Scan
 ```
 
