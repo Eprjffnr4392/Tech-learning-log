@@ -4,7 +4,7 @@ IPS를 확인하던 중 공격명 순위에서 `NetBIOS Scan`이라는 항목을
 
 ## 1. NetBIOS란?
 
-**NetBIOS(Network Basic Input/Output System)**는 Windows 환경에서 컴퓨터 간 통신 및 네트워크 자원 공유 등에 사용되어 온 프로토콜이다.
+NetBIOS(Network Basic Input/Output System)는 Windows 환경에서 컴퓨터 간 통신 및 네트워크 자원 공유 등에 사용되어 온 프로토콜이다.
 
 주요 포트는 다음과 같다.
 
