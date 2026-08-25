@@ -272,3 +272,6 @@ IP Spoofing
 ```
 
 이번 내용을 공부하면서 **"공격자가 우리 내부 패킷을 보고 공격한다"와 "공격자가 직접 패킷을 보내고 응답을 분석한다"는 것이 서로 다른 개념**이라는 점을 이해하게 되었다.
+
+덧붙이며)
+관리대행별 IPv4 주소 목록: https://xn--3e0bx5euxnjje69i70af08bea817g.xn--3e0b707e/jsp/business/management/isCurrentIpv4.jsp
