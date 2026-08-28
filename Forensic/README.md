@@ -1,2 +1,2 @@
-1. [현장에서의 포렌식 실습 및 분석](Forensic/forensic_ex.md)
+1. [현장에서의 포렌식 실습 및 분석](/forensic_ex.md)
 2. 포렌식 개인 학습
