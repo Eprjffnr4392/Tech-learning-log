@@ -4,7 +4,7 @@
 
 ---
 
-## About
+## 정보
 
 안녕하세요? 찾아주셔서 감사합니다.
 
@@ -115,10 +115,7 @@
 ### 🔎 Technical Analysis
 
 * 장애 원인 분석
-* Log Analysis
 * Configuration Analysis
-* 제조사 기술 분석
-* 문제 재현 및 검증
 * Digital Forensics
 * Reverse Engineering
 
