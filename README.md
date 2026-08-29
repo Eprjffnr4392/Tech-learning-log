@@ -69,7 +69,7 @@
 
 ### 🌐 Network
 
-* TCP/IP
+* [TCP/IP](https://github.com/Eprjffnr4392/Tech-learning-log/tree/main/TCP_UDP)
 * Routing
 * VPN / IPsec
 * IPsec VPN Lab
