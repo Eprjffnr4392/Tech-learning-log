@@ -859,7 +859,7 @@ IP
 
 ## 정리
 
-QUIC은 단순히 **"UDP를 사용하는 TCP"**라고 이해하기보다는,
+QUIC은 단순히 **UDP를 사용하는 TCP**라고 이해하기보다는,
 
 > **UDP를 기반으로 TCP의 신뢰성·흐름 제어·혼잡 제어 기능 등을 구현하고, TLS 1.3과 Stream 및 Connection Migration 등의 기능을 결합한 전송 프로토콜**
 
