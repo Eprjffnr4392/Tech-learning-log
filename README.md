@@ -100,7 +100,7 @@
 * Network Security
 * Security Solutions
 * DDoS Simulation
-* Digital Forensics
+* [Digital Forensics](https://github.com/Eprjffnr4392/Tech-learning-log/commit/e6c7b79174c381c642f2bc42de94d2e921842310)
 * Reverse Engineering
 * CTF / Security Study
 
