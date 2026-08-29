@@ -419,7 +419,7 @@ Client                                      Server
 
 ## TCP 재전송
 
-TCP는 데이터가 정상적으로 전달되지 않은 경우 **재전송(Retransmission)**을 수행하여 신뢰성 있는 통신을 제공한다.
+TCP는 데이터가 정상적으로 전달되지 않은 경우 재전송(Retransmission)을 수행하여 신뢰성 있는 통신을 제공한다.
 
 예:
 
