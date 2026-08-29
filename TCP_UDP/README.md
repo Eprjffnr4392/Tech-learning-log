@@ -587,3 +587,297 @@ TCP는 데이터가 정확한 순서로 전달되어야 하고 손실된 데이�
 * 스트리밍 등
 
 UDP는 일부 데이터가 손실되더라도 **빠른 전송과 낮은 지연시간**이 중요한 경우 적합하다.
+
+# QUIC
+
+QUIC(Quick UDP Internet Connections)은 **UDP를 기반으로 설계된 전송 계층 프로토콜**
+
+TCP의 신뢰성 있는 데이터 전송 기능과 TLS의 보안 기능을 결합하면서, TCP에서 발생하는 연결 설정 및 데이터 전송의 지연을 줄이도록 설계되었다.
+
+현재 HTTP/3는 QUIC을 전송 프로토콜로 사용한다.
+
+## QUIC의 특징
+
+### 1) UDP 기반
+
+QUIC은 TCP가 아닌 **UDP를 기반으로 동작**한다.
+
+```text
+기존 HTTPS
+
+HTTP
+ ↓
+TLS
+ ↓
+TCP
+ ↓
+IP
+```
+
+```text
+HTTP/3
+
+HTTP/3
+ ↓
+QUIC
+ ↓
+UDP
+ ↓
+IP
+```
+
+UDP 자체는 신뢰성 있는 데이터 전송을 제공하지 않지만, QUIC이 UDP 위에서 다음과 같은 기능을 구현한다.
+
+* 데이터의 순서 보장
+* 손실된 데이터의 재전송
+* 흐름 제어
+* 혼잡 제어
+* 연결 관리
+* TLS를 이용한 암호화
+
+따라서 QUIC은 **UDP의 단순한 전송 방식 위에 TCP와 유사한 신뢰성 기능을 구현한 프로토콜**이라고 이해할 수 있다.
+
+---
+
+### 2) TLS 1.3 기본 적용
+
+QUIC은 **TLS 1.3을 기본적으로 사용**하여 통신을 암호화한다.
+
+TCP에서는 일반적으로 다음과 같은 구조를 사용한다.
+
+```text
+TCP 연결 설정
+    ↓
+TLS Handshake
+    ↓
+암호화된 데이터 통신
+```
+
+반면 QUIC은 TLS가 QUIC 연결 설정 과정에 통합되어 있다.
+
+```text
+QUIC + TLS 1.3
+        ↓
+암호화된 통신
+```
+
+이를 통해 연결 설정 과정에서 발생하는 지연을 줄일 수 있다.
+
+---
+
+### 3) 빠른 연결 설정
+
+TCP는 일반적으로 데이터를 전송하기 전에 **3-Way Handshake**를 수행하고, HTTPS에서는 이후 TLS Handshake 과정도 필요하다.
+
+```text
+TCP
+
+Client → Server : SYN
+Client ← Server : SYN + ACK
+Client → Server : ACK
+
+        ↓
+
+TLS Handshake
+
+        ↓
+
+데이터 전송
+```
+
+QUIC은 QUIC과 TLS 1.3을 통합하여 연결 설정에 필요한 왕복 횟수를 줄일 수 있다.
+
+따라서 TCP + TLS 기반의 HTTPS보다 **연결 설정에 필요한 지연시간을 줄이는 데 유리하다.**
+
+---
+
+### 4) Stream 기반 통신
+
+QUIC은 하나의 연결(Connection) 안에서 여러 개의 **Stream**을 사용할 수 있다.
+
+```text
+QUIC Connection
+│
+├── Stream 1
+│   └── 데이터
+│
+├── Stream 2
+│   └── 데이터
+│
+└── Stream 3
+    └── 데이터
+```
+
+각 Stream은 독립적으로 데이터를 전달할 수 있다.
+
+이러한 구조를 통해 TCP에서 발생하는 **Head-of-Line Blocking(HOL Blocking)** 문제를 완화할 수 있다.
+
+---
+
+### 5) Head-of-Line Blocking 완화
+
+TCP는 하나의 연결에서 데이터를 순서대로 처리하기 때문에 특정 데이터가 손실되면 뒤에 도착한 데이터도 해당 데이터가 복구될 때까지 기다려야 한다.
+
+```text
+TCP
+
+Packet 1 → 정상 수신
+Packet 2 → 손실
+Packet 3 → 수신
+Packet 4 → 수신
+
+Packet 2가 복구될 때까지
+Packet 3, Packet 4 처리 지연
+```
+
+QUIC은 하나의 연결 안에서 여러 Stream을 사용할 수 있기 때문에 특정 Stream에서 패킷 손실이 발생하더라도 **다른 Stream의 데이터 처리를 계속할 수 있다.**
+
+```text
+QUIC
+
+Stream 1 → 데이터 손실
+Stream 2 → 정상 처리
+Stream 3 → 정상 처리
+```
+
+따라서 TCP의 연결 단위 Head-of-Line Blocking 문제를 완화할 수 있다.
+
+단, 하나의 QUIC Stream 내부에서는 데이터 순서가 보장되므로 같은 Stream에서 발생한 손실은 해당 Stream의 데이터 처리에 영향을 줄 수 있다.
+
+---
+
+### 6) Connection Migration
+
+QUIC은 **Connection ID**를 이용하여 연결을 식별할 수 있다.
+
+TCP 연결은 일반적으로 다음과 같은 IP와 Port의 조합에 크게 의존한다.
+
+```text
+Client IP
++
+Client Port
++
+Server IP
++
+Server Port
+```
+
+따라서 클라이언트의 네트워크가 변경되면 기존 TCP 연결을 유지하기 어려울 수 있다.
+
+예:
+
+```text
+Wi-Fi
+  ↓
+LTE / 5G
+```
+
+QUIC은 Connection ID를 사용하기 때문에 네트워크 환경이 변경되어 IP 주소가 변경되더라도 **기존 연결을 유지하면서 통신을 계속할 수 있도록 설계되어 있다.**
+
+이를 **Connection Migration**이라고 한다.
+
+---
+
+## QUIC의 구조
+
+QUIC은 UDP 위에서 동작하며, QUIC 패킷 내부에 여러 종류의 프레임을 포함할 수 있다.
+
+```text
+┌─────────────────────────────────────────┐
+│ UDP Header                              │
+├─────────────────────────────────────────┤
+│ QUIC Header                             │
+├─────────────────────────────────────────┤
+│ QUIC Packet                             │
+│                                         │
+│ ┌─────────────────────────────────────┐ │
+│ │ Frame                               │ │
+│ │ - STREAM                            │ │
+│ │ - ACK                               │ │
+│ │ - CRYPTO                            │ │
+│ │ - CONNECTION_CLOSE                  │ │
+│ │ - 기타                              │ │
+│ └─────────────────────────────────────┘ │
+└─────────────────────────────────────────┘
+```
+
+QUIC에서는 데이터 전송, ACK, 연결 관리 등의 정보를 **Frame** 단위로 처리한다.
+
+---
+
+## TCP / UDP / QUIC 비교
+
+| 구분                   | TCP                     | UDP                 | QUIC                 |
+| -------------------- | ----------------------- | ------------------- | -------------------- |
+| 기반 프로토콜              | IP 위에서 직접 동작            | IP 위에서 직접 동작        | UDP 위에서 동작           |
+| 연결 방식                | 연결 지향                   | 비연결형                | 연결 지향                |
+| 연결 설정                | 3-Way Handshake         | 없음                  | QUIC + TLS Handshake |
+| 암호화                  | 기본 제공하지 않음              | 기본 제공하지 않음          | TLS 1.3 기본 사용        |
+| 신뢰성                  | 지원                      | 기본적으로 미지원           | 지원                   |
+| 재전송                  | 지원                      | 기본적으로 미지원           | 지원                   |
+| 순서 보장                | 지원                      | 기본적으로 미지원           | Stream별 지원           |
+| 흐름 제어                | 지원                      | 없음                  | 지원                   |
+| 혼잡 제어                | 지원                      | 없음                  | 지원                   |
+| 다중 Stream            | 없음                      | 없음                  | 지원                   |
+| HOL Blocking         | 연결 단위로 발생 가능            | 해당 개념이 상대적으로 다름     | Stream 단위로 완화        |
+| Connection Migration | 어려움                     | 별도 구현 필요            | 지원                   |
+| 주요 사용                | HTTP/1.1, HTTP/2, SSH 등 | DNS, DHCP, 실시간 통신 등 | HTTP/3               |
+
+## QUIC과 HTTP/3
+
+HTTP/3는 QUIC을 전송 프로토콜로 사용한다.
+
+```text
+HTTP/1.1
+    ↓
+TCP
+    ↓
+IP
+```
+
+```text
+HTTP/2
+    ↓
+TCP
+    ↓
+IP
+```
+
+```text
+HTTP/3
+    ↓
+QUIC
+    ↓
+UDP
+    ↓
+IP
+```
+
+따라서 HTTP/3에서는 TCP 대신 QUIC을 사용하여 **빠른 연결 설정, TLS 1.3 기반 암호화, Stream 기반 통신, Connection Migration** 등의 장점을 활용할 수 있다.
+
+---
+
+## 정리
+
+QUIC은 단순히 **"UDP를 사용하는 TCP"**라고 이해하기보다는,
+
+> **UDP를 기반으로 TCP의 신뢰성·흐름 제어·혼잡 제어 기능 등을 구현하고, TLS 1.3과 Stream 및 Connection Migration 등의 기능을 결합한 전송 프로토콜**
+
+이라고 이해하는 것이 좋다.
+
+```text
+TCP
+→ 신뢰성은 높지만 연결 설정과 HOL Blocking 등의 단점 존재
+
+UDP
+→ 빠르고 단순하지만 신뢰성 및 연결 관리 기능이 부족
+
+QUIC
+→ UDP 기반
+→ 신뢰성 있는 데이터 전송
+→ TLS 1.3 기본 사용
+→ 다중 Stream
+→ Connection Migration
+→ HTTP/3의 전송 프로토콜
+```
+
