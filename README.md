@@ -71,7 +71,7 @@
 
 * [TCP/IP](https://github.com/Eprjffnr4392/Tech-learning-log/tree/main/TCP_UDP)
 * [Routing](https://github.com/Eprjffnr4392/Tech-learning-log/blob/main/Routing/README.md)
-* VPN / IPsec
+* [VPN / IPsec](https://github.com/Eprjffnr4392/Tech-learning-log/blob/main/VPN%2CIPSec/README.md)
 * IPsec VPN Lab
 * Firewall
 * Network Troubleshooting
