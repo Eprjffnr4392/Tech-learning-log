@@ -20,6 +20,7 @@
   winlogon.exe에서 생성되는 Session 1 이상의 새 세션 초기화
   최소 2개 필요함 - 작업관리자에서도 두 개 관측 가능
 <img width="753" height="185" alt="Image" src="https://github.com/user-attachments/assets/7d684fb0-73ff-400e-a619-6212a6a7b749" />
+<img width="741" height="252" alt="Image" src="https://github.com/user-attachments/assets/826db41f-afd1-424a-92b3-e493f1992293" />
 
 
 
