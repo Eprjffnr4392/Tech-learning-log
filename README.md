@@ -70,7 +70,7 @@
 ### 🌐 Network
 
 * [TCP/IP](https://github.com/Eprjffnr4392/Tech-learning-log/tree/main/TCP_UDP)
-* Routing
+* [Routing](https://github.com/Eprjffnr4392/Tech-learning-log/blob/main/Routing/README.md)
 * VPN / IPsec
 * IPsec VPN Lab
 * Firewall
