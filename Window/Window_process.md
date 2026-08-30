@@ -205,7 +205,7 @@ lsass.exe
 
 <img width="741" height="252" alt="Image" src="https://github.com/user-attachments/assets/826db41f-afd1-424a-92b3-e493f1992293" />
 
-- 위와 같이 System 프로세스와 wininit.exe 등의 시스템 프로세스가 서로 다른 부모-자식 관계를 가지면서 실행되고 있는 것을 확인할 수 있다.
+- 위와 같이 System 프로세스 wininit.exe 등과 같은 깊이에서 실행되는 것을 알 수 있음.
 
 ---
 
