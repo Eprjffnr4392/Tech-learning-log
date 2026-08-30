@@ -116,7 +116,6 @@
 
 * 장애 원인 분석
 * Configuration Analysis
-* Digital Forensics
 * Reverse Engineering
 
 ### 🛠️ Troubleshooting
