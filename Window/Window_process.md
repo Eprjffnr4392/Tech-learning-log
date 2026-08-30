@@ -18,6 +18,7 @@
   wininit.exe에서 생성되는 Session 0을 초기화
   winlogon.exe에서 생성되는 Session 1 이상의 새 세션 초기화
   최소 2개 필요함 - 작업관리자에서도 두 개 관측 가능
+<img width="728" height="181" alt="Image" src="https://github.com/user-attachments/assets/fe3a6549-b132-477b-a85b-0590b78eed29" />
 [image](https://github.com/Eprjffnr4392/Tech-learning-log/issues/5#issue-5292131032)
 
 
