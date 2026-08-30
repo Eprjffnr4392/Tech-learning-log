@@ -98,7 +98,7 @@ smss.exe
           └── winlogon.exe
 ```
 
-> 참고: 세션이 생성된 이후 해당 세션의 SMSS 인스턴스는 초기화 작업을 마치면 종료될 수 있다. 따라서 작업 관리자에서 항상 여러 개의 smss.exe가 실행되고 있는 것은 아니다.
+> 참고: 세션이 생성된 이후 해당 세션의 SMSS 인스턴스는 초기화 작업을 마치면 종료될 수 있다. 따라서 항상 여러 개의 smss.exe가 실행되고 있는 것은 아니다.
 
 <img width="728" height="181" alt="Image" src="https://github.com/user-attachments/assets/fe3a6549-b132-477b-a85b-0590b78eed29" />
 
