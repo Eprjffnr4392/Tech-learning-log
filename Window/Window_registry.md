@@ -100,7 +100,7 @@ Data      : Hello
 
 # 레지스트리 편집기
 
-Windows에서는 **레지스트리 편집기(Registry Editor)**를 이용하여 레지스트리를 확인하고 수정할 수 있다.
+Windows에서는 레지스트리 편집기(Registry Editor)를 이용하여 레지스트리를 확인하고 수정할 수 있다.
 
 ### 실행 방법
 
