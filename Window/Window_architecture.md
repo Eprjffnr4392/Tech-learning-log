@@ -8,7 +8,7 @@
 
 ## 윈도우 NT 아키텍처
 
-- Windows NT 계열 운영체제는 크게 **유저 모드(User Mode)**와 **커널 모드(Kernel Mode)**로 구성된다.
+- Windows NT 계열 운영체제는 크게 유저 모드(User Mode)와 커널 모드(Kernel Mode)로 구성된다.
 - 각 모드는 서로 다른 권한 수준에서 실행된다.
 
 ### 유저 모드(User Mode)
