@@ -52,5 +52,7 @@
      
      <img width="718" height="327" alt="image" src="https://github.com/user-attachments/assets/51e1841c-d422-44ae-b51f-bffe2ee6332e" />
      <img width="700" height="308" alt="image" src="https://github.com/user-attachments/assets/839b3706-0d3b-4131-82cb-e953e4b3f9cd" />
+
      위와 같이 담당하는 서비스를 볼 수 있었다.
 
+      컴퓨터가 느릴 때 프로세스를 보면 svchost가 cpu나 memory를 100으로 점유하고 있거나 하는 경우가 있다. 프로세스를 종료해도 다시 재실행되기 때문에 담당하는 서비스를 확인하고, 리소스 풀 문제를 해결할 수 있다. 
