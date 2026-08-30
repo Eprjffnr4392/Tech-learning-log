@@ -49,3 +49,8 @@
       윈도우 서비스의 호스트 프로세스
       DLL을 이용한 서비스가 실행하도록 제공
       여러 개의 프로세스를 생성할 수 있음
+     
+     <img width="718" height="327" alt="image" src="https://github.com/user-attachments/assets/51e1841c-d422-44ae-b51f-bffe2ee6332e" />
+     <img width="700" height="308" alt="image" src="https://github.com/user-attachments/assets/839b3706-0d3b-4131-82cb-e953e4b3f9cd" />
+     위와 같이 담당하는 서비스를 볼 수 있었다.
+
