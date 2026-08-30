@@ -1,4 +1,3 @@
-````markdown
 # 윈도우 아키텍처
 
 - 윈도우는 크게 **유저 모드(User Mode)**와 **커널 모드(Kernel Mode)**로 구분된다.
@@ -346,4 +345,3 @@ HAL / Device Driver
 
 물리적 하드웨어
 ```
-````
