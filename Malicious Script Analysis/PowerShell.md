@@ -370,7 +370,7 @@ iwr
 
 ## CLR(Common Language Runtime)
 
-- **CLR(Common Language Runtime)**은 .NET 프로그램이 실행될 수 있도록 관리하는 실행 환경
+- CLR(Common Language Runtime)은 .NET 프로그램이 실행될 수 있도록 관리하는 실행 환경
 - 메모리 관리, 예외 처리, 보안 관련 기능, 형 변환, JIT 컴파일 등의 기능을 제공한다.
 
 ## IL(Intermediate Language)
