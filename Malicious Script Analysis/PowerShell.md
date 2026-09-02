@@ -125,7 +125,7 @@ PowerShell 실행
 
 # PowerShell ISE
 
-- **PowerShell ISE(Integrated Scripting Environment)**는 PowerShell 스크립트를 작성하고 실행하며 디버깅할 수 있는 GUI 기반 개발 환경
+- PowerShell ISE(Integrated Scripting Environment)는 PowerShell 스크립트를 작성하고 실행하며 디버깅할 수 있는 GUI 기반 개발 환경
 - Windows PowerShell 스크립트 작성 및 디버깅에 사용할 수 있다.
 - 실행 파일:
 
