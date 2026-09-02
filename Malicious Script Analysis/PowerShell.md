@@ -341,6 +341,7 @@ $b = 'X'
 | `DownloadString()` | 원격 콘텐츠를 문자열로 가져옴 | 문자열 처리 자체는 디스크 저장이 필요하지 않음 |
 | `DownloadFile()` | 원격 파일을 지정된 경로에 저장 | 디스크 저장 |
 | `Invoke-WebRequest` | HTTP/HTTPS 요청을 통해 웹 리소스에 접근 | 사용 방식에 따라 달라짐 |
+* 공격의 70~90%가 DownloadString+IEX 조합을 사용하는 것으로 알려져 있다.
 
 ### DownloadString()
 
