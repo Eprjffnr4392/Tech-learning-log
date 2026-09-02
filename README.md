@@ -106,6 +106,7 @@
 * [Digital Forensics](https://github.com/Eprjffnr4392/Tech-learning-log/blob/main/Forensic/README.md)
 * Reverse Engineering
 * CTF / Security Study
+* Malicious Script Analysis
 
 ### ⚙️ Server & Infrastructure
 
