@@ -1,4 +1,3 @@
-````markdown
 ## ISE 디버깅과 Base64/Encoded Command 실습
 
 ### PowerShell ISE 디버깅 기본
@@ -127,4 +126,3 @@ $decoded = [System.Text.Encoding]::Unicode.GetString(
 * 계산기 프로그램 실행 확인
 
 <img width="1041" height="796" alt="image" src="https://github.com/user-attachments/assets/aeec7e89-8a44-4715-9b51-dc52aaff63f8" />
-````
