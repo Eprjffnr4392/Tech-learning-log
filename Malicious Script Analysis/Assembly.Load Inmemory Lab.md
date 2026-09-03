@@ -47,8 +47,8 @@ $b64
 ```
 
 * `$b64` 확인
+<img width="1090" height="722" alt="스크린샷 2026-09-03 232927" src="https://github.com/user-attachments/assets/e92468f5-8c93-423e-952b-6bc3a5480e3d" />
 
-<img width="1090" height="722" alt="image" src="https://github.com/user-attachments/assets/09cfa9ba-a165-4b90-9917-167d3c9c6cb8" />
 
 ## 실습 2 - 바이트 배열 확인 (MZ 매직)
 
