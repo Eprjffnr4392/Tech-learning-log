@@ -326,7 +326,7 @@ CVSS v3.1에서는 다음 세 가지 Metric Group을 사용한다.
 
 ### 6. CIA 영향도
 
-취약점이 정보의 **기밀성(Confidentiality), 무결성(Integrity), 가용성(Availability)**에 미치는 영향을 평가한다.
+취약점이 정보의 기밀성(Confidentiality), 무결성(Integrity), 가용성(Availability)에 미치는 영향을 평가한다.
 
 각 항목은 다음과 같은 수준으로 평가한다.
 
@@ -342,7 +342,7 @@ CVSS v3.1에서는 다음 세 가지 Metric Group을 사용한다.
 
 Log4Shell로 알려진 Log4j 취약점은 네트워크를 통한 원격 공격이 가능하고, 공격에 별도의 인증이나 사용자 상호작용이 필요하지 않은 특성 등을 가지고 있었다.
 
-CVSS v3.1에서 대표적인 Log4Shell 취약점인 CVE-2021-44228은 **10.0(Critical)**으로 평가되었다.
+CVSS v3.1에서 대표적인 Log4Shell 취약점인 CVE-2021-44228은 10.0(Critical)으로 평가되었다.
 
 다만 CVSS 점수는 취약점의 모든 실제 위험을 의미하는 것은 아니다.
 
