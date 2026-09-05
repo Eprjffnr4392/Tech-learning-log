@@ -122,3 +122,191 @@ Scope)입니다.
 3. 시스템 이해: 체이닝을 위해서는 시스템의 비즈니스 로직과 데이터 흐름을 완벽히 이해하고, "내가
 공격자라면 어떻게 이 서비스를 무너뜨릴까?"라고 끊임없이 질문해야 합니다.
 
+
+
+
+## 쇼핑몰 웹 취약점 공격 실습
+
+쇼핑몰 실습 오픈 소스 -> https://github.com/wangta69/wizmall/
+
+<img width="901" height="446" alt="image" src="https://github.com/user-attachments/assets/57d29d01-18fb-43cf-b05d-3feae5cd8e2a" />
+
+wizmall docker 설치 후 실행 확인
+
+<img width="1087" height="312" alt="image" src="https://github.com/user-attachments/assets/a53f8bf9-d06f-4224-8334-c015e97be900" />
+
+wizmall 설치 후 웹 페이지 접속 확인
+
+<img width="1152" height="623" alt="image" src="https://github.com/user-attachments/assets/741518e5-3898-4146-95f1-fc75f482eb88" />
+
+메인 페이지 접속
+
+<img width="1243" height="974" alt="image" src="https://github.com/user-attachments/assets/173d0f9d-108f-46d5-8bbd-3fdb76458b23" />
+
+---
+
+## 분석
+
+### `wizboard/fileprocess_editor.php`
+
+파일 첨부 기능에서 사용되는 `filepaste()` 함수의 호출 부분을 확인하였다.
+
+<img width="701" height="271" alt="image" src="https://github.com/user-attachments/assets/c84ed2df-a2a5-4d98-aecc-82de19ea3aa8" />
+
+확인한 코드는 다음과 같다.
+
+```php
+filepaste("<?=$filename?>","<?=$common->getImgName($filename)?> (<?=$common->my_filesize($common->upload_path.$filename) ?>)");
+```
+
+`$filename`이 `<script>` 태그 내부의 JavaScript 문자열에 직접 삽입되는 것을 확인하였다.
+
+또한 두 번째 인자에서는 `$filename`을 `getImgName()` 함수에 전달한 결과를 다시 JavaScript 문자열에 삽입하고 있다.
+
+따라서 파일명과 같이 사용자가 제어할 수 있는 값이 적절한 검증이나 출력 인코딩 없이 해당 위치에 삽입되는 경우 XSS가 발생할 가능성이 있는 것으로 판단하였다.
+
+---
+
+### `lib/class.common.php`
+
+`getImgName()` 함수의 정의를 확인하였다.
+
+<img width="802" height="277" alt="image" src="https://github.com/user-attachments/assets/fa17549b-8f75-4bc3-ae80-258e7e28f5fe" />
+
+확인한 함수는 다음과 같다.
+
+```php
+function getImgName($str){
+    //base64_encode로 저장된 파일명을 원래 파일명으로 돌리기
+    return $this->base64_url_decode($str);
+}
+```
+
+`getImgName()`은 Base64 형태로 저장된 파일명을 `base64_url_decode()`를 이용하여 원래 파일명으로 복원하는 역할을 한다.
+
+따라서 `getImgName()` 함수 자체가 XSS를 발생시키는 것은 아니며, **디코딩된 값을 별도의 검증이나 출력 인코딩 없이 JavaScript 코드에 삽입하는 과정**이 취약점의 주요 원인으로 판단된다.
+
+---
+
+## XSS 취약점 발생 원리
+
+전체적인 데이터 흐름은 다음과 같다.
+
+```text
+사용자가 입력한 파일명
+        ↓
+$filename
+        ↓
+getImgName($filename)
+        ↓
+base64_url_decode()
+        ↓
+원래 파일명으로 복원
+        ↓
+<script> 내부 JavaScript 문자열에 삽입
+        ↓
+filepaste() 실행
+```
+
+현재 페이지에서는 다음과 같이 `<script>` 내부에서 `$filename`을 직접 사용하고 있다.
+
+```php
+<script type="text/javascript">
+    ...
+    filepaste("<?=$filename?>", ...);
+</script>
+```
+
+PHP가 실행되면 `$filename`의 값이 JavaScript 코드에 그대로 삽입된다.
+
+따라서 공격자가 제어할 수 있는 파일명에 JavaScript 또는 HTML 문맥을 탈출할 수 있는 문자열을 삽입하고, 해당 값이 서버 측에서 필터링되지 않은 상태로 출력된다면 브라우저가 이를 코드로 해석할 가능성이 있다.
+
+예를 들어 다음과 같은 테스트 문자열을 사용할 수 있다.
+
+```text
+</script><script>alert(1);//
+```
+
+해당 값이 필터링되지 않고 `$filename`에 그대로 반영될 경우 개념적으로 다음과 같은 형태가 만들어질 수 있다.
+
+```html
+<script type="text/javascript">
+    ...
+    filepaste("</script><script>alert(1);//", ...);
+</script>
+```
+
+HTML 파서는 `</script>`를 기존 스크립트의 종료 태그로 인식할 수 있으며, 이후 삽입된 `<script>`가 새로운 JavaScript 코드로 해석될 가능성이 있다.
+
+```html
+</script>
+<script>
+    alert(1);
+</script>
+```
+
+이와 같이 **사용자 입력값이 `<script>` 내부에 직접 삽입되고, 입력값에 대한 적절한 출력 인코딩이 이루어지지 않은 경우 XSS 취약점이 발생할 수 있다.**
+
+---
+
+## XSS 테스트
+
+실험 환경에서 파일 첨부 기능을 이용하여 파일명에 테스트 문자열을 입력하고, 해당 값이 `$filename`에 전달되는지 확인하였다.
+
+테스트 문자열:
+
+```text
+</script><script>alert(1);//
+```
+
+테스트 과정에서는 단순히 알림창의 실행 여부만 확인하는 것이 아니라, 개발자 도구의 `Network → Response` 또는 `Elements`를 통해 입력값이 실제 HTML/JavaScript에 어떤 형태로 삽입되는지도 확인하였다.
+
+### 확인해야 할 사항
+
+* 입력한 파일명이 `$filename`에 전달되는지 확인
+* `getImgName()`을 거친 값이 어떻게 출력되는지 확인
+* 입력값이 HTML/JavaScript 특수문자로 변환되는지 확인
+* `<script>` 내부에 사용자 입력이 그대로 삽입되는지 확인
+* 최종적으로 브라우저에서 입력값이 코드로 해석되는지 확인
+
+---
+
+## 취약점 원인
+
+이번 실습에서 확인한 XSS 취약점의 핵심 원인은 `getImgName()` 함수의 Base64 디코딩 자체가 아니라, **사용자가 제어할 수 있는 파일명 데이터를 적절한 출력 인코딩 없이 JavaScript 컨텍스트에 삽입하는 것**이다.
+
+특히 다음 코드에서 사용자 입력이 JavaScript 문자열에 직접 삽입된다.
+
+```php
+filepaste("<?=$filename?>", ...);
+```
+
+또한 다음 코드에서는 `getImgName()`을 통해 디코딩된 값이 다시 JavaScript 문자열에 삽입된다.
+
+```php
+"<?=$common->getImgName($filename)?>"
+```
+
+Base64는 데이터를 암호화하는 방식이 아닌 인코딩 방식이므로, 디코딩 과정에서 원래의 특수문자가 다시 복원될 수 있다. 따라서 Base64 인코딩만으로는 XSS를 방어할 수 없다.
+
+---
+
+## 대응 방법
+
+사용자 입력값을 `<script>` 내부의 JavaScript 문자열에 직접 삽입하지 않는 것이 가장 안전하다.
+
+부득이하게 JavaScript에 사용자 입력을 전달해야 한다면 **JavaScript 컨텍스트에 맞는 출력 인코딩**을 적용하고, 파일명에 허용할 문자와 길이를 제한하는 등의 서버 측 검증을 함께 적용해야 한다.
+
+또한 사용자 입력을 HTML, JavaScript, URL 등 서로 다른 컨텍스트에서 사용할 경우 각각의 컨텍스트에 맞는 출력 인코딩을 적용해야 한다.
+
+```text
+사용자 입력
+    ↓
+서버 측 검증
+    ↓
+컨텍스트에 맞는 출력 인코딩
+    ↓
+HTML / JavaScript에 안전하게 출력
+```
+
+결론적으로 이번 실습에서는 **파일명 → `$filename` → `getImgName()` → JavaScript 문자열 출력**의 데이터 흐름을 분석하여 사용자 입력이 실행 가능한 JavaScript 컨텍스트까지 도달할 수 있는 구조를 확인하였다.
