@@ -171,8 +171,6 @@ filepaste("<?=$filename?>","<?=$common->getImgName($filename)?> (<?=$common->my_
 
 `getImgName()` 함수의 정의를 확인하였다.
 
-<img width="802" height="277" alt="image" src="https://github.com/user-attachments/assets/fa17549b-8f75-4bc3-ae80-258e7e28f5fe" />
-
 확인한 함수는 다음과 같다.
 
 ```php
