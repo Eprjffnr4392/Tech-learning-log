@@ -137,8 +137,6 @@ wizmall docker 설치 후 실행 확인
 
 wizmall 설치 후 웹 페이지 접속 확인
 
-<img width="1152" height="623" alt="image" src="https://github.com/user-attachments/assets/741518e5-3898-4146-95f1-fc75f482eb88" />
-
 메인 페이지 접속
 
 <img width="1243" height="974" alt="image" src="https://github.com/user-attachments/assets/173d0f9d-108f-46d5-8bbd-3fdb76458b23" />
