@@ -164,7 +164,7 @@
 
 ## 5.1. LLM(Large Language Model)
 
-- **LLM(Large Language Model)**은 방대한 텍스트 데이터를 학습하여 주어진 문맥에서 적절한 다음 토큰을 예측하는 대규모 언어 모델이다.
+- LLM(Large Language Model)은 방대한 텍스트 데이터를 학습하여 주어진 문맥에서 적절한 다음 토큰을 예측하는 대규모 언어 모델이다.
 - 모델의 성능은 단순히 매개변수 개수뿐만 아니라 학습 데이터, 모델 구조, 학습 방법 등 다양한 요소의 영향을 받는다.
 - 대표적인 LLM으로 GPT 계열 등의 모델이 있다.
 
@@ -172,7 +172,7 @@
 
 ## 5.2. RLHF(Reinforcement Learning from Human Feedback)
 
-- **RLHF(Reinforcement Learning from Human Feedback)**는 인간의 피드백을 활용하여 모델이 사람의 의도에 더욱 적절하게 응답하도록 학습하는 방법이다.
+- RLHF(Reinforcement Learning from Human Feedback)는 인간의 피드백을 활용하여 모델이 사람의 의도에 더욱 적절하게 응답하도록 학습하는 방법이다.
 - 사용자가 원하는 형태의 답변과 원하지 않는 답변에 대한 인간의 평가를 학습 과정에 반영한다.
 
 ### 비유
@@ -205,7 +205,7 @@
 
 ## 7.1. Prompt Injection 개념
 
-- **프롬프트 인젝션(Prompt Injection)**은 공격자가 특정한 지시를 입력하여 AI 시스템의 의도된 동작과 다른 결과를 유도하는 공격 기법이다.
+- 프롬프트 인젝션(Prompt Injection)은 공격자가 특정한 지시를 입력하여 AI 시스템의 의도된 동작과 다른 결과를 유도하는 공격 기법이다.
 - AI 시스템에 내부 데이터나 민감한 정보가 연결되어 있는 경우, 잘못된 설계로 인해 정보가 노출될 가능성이 있다.
 
 ---
