@@ -4,7 +4,7 @@
 
 ### OSINT (Open Source Intelligence)
 
-- **OSINT(Open Source Intelligence)**는 뉴스, SNS, GitHub, 공식 문서 등 인터넷에 공개된 출처에서 정보를 수집하고 분석하는 것을 의미한다.
+- OSINT(Open Source Intelligence)는 뉴스, SNS, GitHub, 공식 문서 등 인터넷에 공개된 출처에서 정보를 수집하고 분석하는 것을 의미한다.
 - 공개된 정보를 활용하기 때문에 대상 시스템에 직접적인 요청을 보내지 않고도 다양한 정보를 확보할 수 있다.
 
 ### Reconnaissance (Recon)
