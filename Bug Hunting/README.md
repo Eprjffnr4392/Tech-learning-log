@@ -6,4 +6,4 @@
 5. [실습에 사용할 수 있는 도구](https://github.com/Eprjffnr4392/Tech-learning-log/blob/main/Bug%20Hunting/Bug%20Hunting%20Lab.md)
 6. [CVE 이해](https://github.com/Eprjffnr4392/Tech-learning-log/blob/main/Bug%20Hunting/CVE.md)
 7. [CVE 사례](https://github.com/Eprjffnr4392/Tech-learning-log/blob/main/Bug%20Hunting/CVE%20example.md)
-8. [버그 헌팅 도구 및 앞으로의 전략]()
+8. [버그 헌팅 도구 및 앞으로의 전략](https://github.com/Eprjffnr4392/Tech-learning-log/blob/main/Bug%20Hunting/strategy.md)
