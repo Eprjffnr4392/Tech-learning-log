@@ -127,7 +127,7 @@
 
 ## 3.3. NSE(Nmap Scripting Engine)
 
-- **NSE(Nmap Scripting Engine)**는 Lua 언어로 작성된 스크립트를 Nmap과 함께 실행할 수 있도록 제공되는 기능이다.
+- NSE(Nmap Scripting Engine)는 Lua 언어로 작성된 스크립트를 Nmap과 함께 실행할 수 있도록 제공되는 기능이다.
 - 기본적인 포트 스캔뿐만 아니라 다음과 같은 다양한 보안 진단에 활용할 수 있다.
   - 취약한 서비스 탐지
   - SSL/TLS 설정 확인
