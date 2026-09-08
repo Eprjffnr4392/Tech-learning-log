@@ -108,7 +108,7 @@
 
 # 7. PAM의 역할
 
-**PAM(Pluggable Authentication Modules)**은 Linux에서 인증 기능을 모듈화하여 관리하기 위한 시스템이다.
+PAM(Pluggable Authentication Modules)은 Linux에서 인증 기능을 모듈화하여 관리하기 위한 시스템이다.
 
 PAM을 사용하면 인증과 관련된 정책을 각각의 모듈로 구성할 수 있다.
 
