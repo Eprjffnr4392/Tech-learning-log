@@ -218,7 +218,8 @@ $ sudo faillock --user user --reset
 
 `user`로 5회 잘못된 비밀번호 시도
 
-<img width="746" height="500" alt="image" src="https://github.com/user-attachments/assets/4c0941c0-20cc-4d4c-86fe-75f07e0042bf" />
+<img width="746" height="500" alt="스크린샷 2026-09-08 212458" src="https://github.com/user-attachments/assets/acc1c049-b662-45ee-adc4-4fe6c1a1a399" />
+
 
 잠금 상태 조회 및 잠금 해제
 
